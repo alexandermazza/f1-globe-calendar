@@ -79,17 +79,17 @@ function init() {
 
   // Initialize controls
   controls = new OrbitControls(camera, renderer.domElement);
-  controls.enableDamping = true;
+  controls.enableDamping = false;
   controls.dynamicDampingFactor = 0.01;
   controls.enablePan = false;
-  controls.minDistance = 200;
-  controls.maxDistance = 500;
-  controls.rotateSpeed = 0.8;
-  controls.zoomSpeed = 1;
-  controls.autoRotate = false;
+  controls.minDistance = 330;
+  controls.maxDistance = 430;
+  controls.rotateSpeed = 0.4;
+  controls.zoomSpeed = 0.1;
+  controls.autoRotate = true;
 
   controls.minPolarAngle = Math.PI / 3.5;
-  controls.maxPolarAngle = Math.PI - Math.PI / 3;
+  controls.maxPolarAngle = Math.PI - Math.PI / 4;
 
   window.addEventListener("resize", onWindowResize, false);
   document.addEventListener("mousemove", onMouseMove);
@@ -122,7 +122,7 @@ function initGlobe() {
   setTimeout(() => {
     Globe.arcsData(travelHistory.flights)
       .arcColor((e) => {
-        return e.status ? "#9cff00" : "#FF4000";
+        return e.status ? "#82f7f7" : "#FF4000";
       })
       .arcAltitude((e) => {
         return e.arcAlt;
@@ -132,11 +132,11 @@ function initGlobe() {
       })
       .arcDashLength(0.9)
       .arcDashGap(4)
-      .arcDashAnimateTime(1000)
-      .arcsTransitionDuration(1000)
+      .arcDashAnimateTime(2000)
+      .arcsTransitionDuration(2000)
       .arcDashInitialGap((e) => e.order * 1)
       .labelsData(airportHistory.airports)
-      .labelColor(() => "#ffcb21")
+      .labelColor(() => "#ffffff")
       .labelDotOrientation((e) => {
         return e.text === "ALA" ? "top" : "right";
       })
@@ -144,11 +144,11 @@ function initGlobe() {
       .labelSize((e) => e.size)
       .labelText("city")
       .labelResolution(6)
-      .labelAltitude(0.01)
+      .labelAltitude(0.15)
       .pointsData(airportHistory.airports)
       .pointColor(() => "#ffffff")
       .pointsMerge(true)
-      .pointAltitude(0.07)
+      .pointAltitude(0.14)
       .pointRadius(0.05);
   }, 1000);
 
@@ -157,8 +157,8 @@ function initGlobe() {
   const globeMaterial = Globe.globeMaterial();
   globeMaterial.color = new Color(0x3a228a);
   globeMaterial.emissive = new Color(0x220038);
-  globeMaterial.emissiveIntensity = 0.1;
-  globeMaterial.shininess = 0.7;
+  globeMaterial.emissiveIntensity = 1.3;
+  globeMaterial.shininess = 1.7;
 
   // NOTE Cool stuff
   // globeMaterial.wireframe = true;
@@ -167,8 +167,6 @@ function initGlobe() {
 }
 
 function onMouseMove(event) {
-  mouseX = event.clientX - windowHalfX;
-  mouseY = event.clientY - windowHalfY;
   // console.log("x: " + mouseX + " y: " + mouseY);
 }
 

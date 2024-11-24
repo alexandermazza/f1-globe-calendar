@@ -2,92 +2,167 @@
     "type": "AirportsCollection",
     "airports": [
         {
-            "text": "FRU",
-            "size": 1.0,
-            "country": "Kyrgyzstan",
-            "city": "Bishkek",
-            "lat": "42.85",
-            "lng": "74.583333333"
+            "text": "Bahrain",
+            "size": 1,
+            "city": "Bahrain",
+            "lat": "26.0321",
+            "lng": "50.5108"
         },
         {
-            "text": "TAS",
-            "size": 1.0,
-            "country": "Uzbekistan",
-            "city": "Tashkent",
-            "lat": "41.266666666667",
-            "lng": "69.366666666667"
+            "text": "Saudi Arabia",
+            "size": 1,
+            "country": "Saudi Arabia",
+            "city": "Jeddah",
+            "lat": "21.6315",
+            "lng": "39.1046"
         },
         {
-            "text": "ALA",
-            "size": 1.0,
-            "country": "Kazakhstan",
-            "city": "Almaty",
-            "lat": "43.35",
-            "lng": "75.033333333333"
+            "text": "Australia",
+            "size": 1,
+            "country": "Australia",
+            "city": "Australia",
+            "lat": "-37.8503",
+            "lng": "144.9631"
         },
         {
-            "text": "ICN",
-            "size": 1.0,
-            "country": "South Korea",
-            "city": "Incheon",
-            "lat": "37.472222222222",
-            "lng": "126.60833333333"
+            "text": "Suzuka",
+            "size": 1,
+            "country": "Suzuka",
+            "city": "Suzuka",
+            "lat": "34.8817",
+            "lng": "136.5842"
         },
         {
-            "text": "KJA",
-            "size": 1.0,
-            "country": "Russia",
-            "city": "Krasnoyarsk",
-            "lat": "56.05",
-            "lng": "92.9"
+            "text": "China",
+            "size": 1,
+            "country": "China",
+            "city": "China",
+            "lat": "22.2304",
+            "lng": "101.4737"
         },
         {
-            "text": "OVB",
-            "size": 1.0,
-            "country": "Russia",
-            "city": "Novosibirsk",
-            "lat": "55.033333333333",
-            "lng": "83"
+            "text": "Miami",
+            "size": 1,
+            "country": "Miami",
+            "city": "Miami",
+            "lat": "25.7617",
+            "lng": "-80.1918"
         },
         {
-            "text": "KUL",
-            "size": 1.0,
-            "country": "Malaysia",
-            "city": "Kuala-Lumpur",
-            "lat": "3.11666666666",
-            "lng": "101.7"
+            "text": "Imola",
+            "size": 1,
+            "country": "Imola",
+            "city": "Imola",
+            "lat": "44.3513",
+            "lng": "11.7129"
         },
         {
-            "text": "SIN",
-            "size": 1.0,
-            "country": "Singapore",
-            "city": "Singapore",
-            "lat": "1.2916666666667",
-            "lng": "103.85"
+            "text": "Monaco",
+            "size": 1,
+            "country": "Monaco",
+            "city": "Monaco",
+            "lat": "43.7384",
+            "lng": "7.4246"
         },
         {
-            "text": "DPS",
-            "size": 1.0,
-            "country": "Indonesia",
-            "city": "Denpasar",
-            "lat": "-8.75",
-            "lng": "115.16666666667"
+            "text": "Canada",
+            "size": 1,
+            "country": "Canada",
+            "city": "Canada",
+            "lat": "45.5014",
+            "lng": "-73.5226"
         },
         {
-            "text": "DMK",
-            "size": 1.0,
-            "country": "Thailand",
-            "city": "Bangkok",
-            "lat": "13.9255",
-            "lng": "100.5923"
+            "text": "Spain",
+            "size": 1,
+            "country": "Spain",
+            "city": "Spain",
+            "lat": "41.3874",
+            "lng": "2.1686"
         },
         {
-            "text": "BKK",
-            "size": 1.0,
-            "country": "Thailand",
-            "city": "",
-            "lat": "13.6900",
-            "lng": "100.7501"
+            "text": "Austria",
+            "size": 1,
+            "country": "Austria",
+            "city": "Canada",
+            "lat": "47.5162",
+            "lng": "14.5501"
+        },
+        {
+            "text": "Silverstone",
+            "size": 1,
+            "country": "Silverstone",
+            "city": "Silverstone",
+            "lat": "52.0736",
+            "lng": "1.0217"
+        },
+        {
+            "text": "Hungaroring",
+            "size": 1,
+            "country": "Hungaroring",
+            "city": "Hungaroring",
+            "lat": "47.1625",
+            "lng": "19.5033"
+        },
+        {
+            "size": 1,
+            "city": "Spa",
+            "lat": "50.4419",
+            "lng": "5.9667"
+        },
+        {
+            "size": 1,
+            "city": "Dutch GP",
+            "lat": "52.3842",
+            "lng": "4.5345"
+        },
+        {
+            "size": 1,
+            "city": "Monza",
+            "lat": "45.5845",
+            "lng": "9.2744"
+        },
+        {
+            "size": 1,
+            "city": "Baku",
+            "lat": "40.1431",
+            "lng": "47.5769"
+        },
+        {
+            "size": 1,
+            "city": "Austin",
+            "lat": "30.2672",
+            "lng": "-97.7431"
+        },
+        {
+            "size": 1,
+            "city": "Mexico",
+            "lat": "19.4326",
+            "lng": "-99.1332"
+        },
+        {
+            "size": 1,
+            "city": "Interlagos",
+            "lat": "-23.7048",
+            "lng": "-46.6992"
+        },
+        {
+            "size": 1,
+            "city": "Las Vegas",
+            "lat": "36.1716",
+            "lng": "-115.1391"
+        },
+        {
+            "size": 1,
+            "city": "Qatar",
+            "lat": "25.3548",
+            "lng": "51.1839"
+        },
+        {
+            "size": 1,
+            "city": "Abu Dhabi",
+            "lat": "24.4539",
+            "lng": "54.3773"
         }
     ]
 }
