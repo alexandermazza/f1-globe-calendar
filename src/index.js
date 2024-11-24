@@ -60,14 +60,15 @@ function init() {
   dLight2.position.set(-200, 500, 200);
   camera.add(dLight2);
 
-  camera.position.z = 400;
+  camera.position.z = 0;
   camera.position.x = 0;
   camera.position.y = 0;
+
 
   scene.add(camera);
 
   // Additional effects
-  scene.fog = new Fog(0x535ef3, 400, 2000);
+  scene.fog = new Fog(0x535ef3, 400, 1000);
 
   // Helpers
   // const axesHelper = new AxesHelper(800);
@@ -79,17 +80,20 @@ function init() {
 
   // Initialize controls
   controls = new OrbitControls(camera, renderer.domElement);
-  controls.enableDamping = false;
-  controls.dynamicDampingFactor = 0.01;
+  controls.enableDamping = true;
+  controls.dynamicDampingFactor = 1.01;
   controls.enablePan = false;
   controls.minDistance = 330;
   controls.maxDistance = 430;
   controls.rotateSpeed = 0.4;
   controls.zoomSpeed = 0.1;
   controls.autoRotate = true;
+  controls.autoRotateSpeed = 2;
 
   controls.minPolarAngle = Math.PI / 3.5;
   controls.maxPolarAngle = Math.PI - Math.PI / 4;
+
+  camera.filmGauge = 5;
 
   window.addEventListener("resize", onWindowResize, false);
   document.addEventListener("mousemove", onMouseMove);
@@ -106,8 +110,8 @@ function initGlobe() {
     .hexPolygonResolution(3)
     .hexPolygonMargin(0.7)
     .showAtmosphere(true)
-    .atmosphereColor("#3a228a")
-    .atmosphereAltitude(0.25)
+    .atmosphereColor("#3A22D8")
+    .atmosphereAltitude(0.45)
     .hexPolygonColor((e) => {
       if (
         ["KGZ", "KOR", "THA", "RUS", "UZB", "IDN", "KAZ", "MYS"].includes(
@@ -140,13 +144,13 @@ function initGlobe() {
       .labelDotOrientation((e) => {
         return e.text === "ALA" ? "top" : "right";
       })
-      .labelDotRadius(0.3)
+      .labelDotRadius(0.15)
       .labelSize((e) => e.size)
       .labelText("city")
       .labelResolution(6)
       .labelAltitude(0.15)
       .pointsData(airportHistory.airports)
-      .pointColor(() => "#ffffff")
+      .pointColor(() => "#FF0000")
       .pointsMerge(true)
       .pointAltitude(0.14)
       .pointRadius(0.05);
@@ -155,10 +159,10 @@ function initGlobe() {
   Globe.rotateY(-Math.PI * (5 / 9));
   Globe.rotateZ(-Math.PI / 6);
   const globeMaterial = Globe.globeMaterial();
-  globeMaterial.color = new Color(0x3a228a);
+  globeMaterial.color = new Color('#1b4f72');
   globeMaterial.emissive = new Color(0x220038);
-  globeMaterial.emissiveIntensity = 1.3;
-  globeMaterial.shininess = 1.7;
+  globeMaterial.emissiveIntensity = 0.3;
+  globeMaterial.shininess = 0.7;
 
   // NOTE Cool stuff
   // globeMaterial.wireframe = true;
@@ -183,7 +187,7 @@ function animate() {
     Math.abs(mouseX) <= windowHalfX / 2
       ? (mouseX / 2 - camera.position.x) * 0.005
       : 0;
-  camera.position.y += (-mouseY / 2 - camera.position.y) * 0.005;
+  camera.position.y += (-mouseY);
   camera.lookAt(scene.position);
   controls.update();
   renderer.render(scene, camera);

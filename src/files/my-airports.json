@@ -84,7 +84,7 @@
             "text": "Austria",
             "size": 1,
             "country": "Austria",
-            "city": "Canada",
+            "city": "Austria",
             "lat": "47.5162",
             "lng": "14.5501"
         },
@@ -112,7 +112,7 @@
         },
         {
             "size": 1,
-            "city": "Dutch GP",
+            "city": "Netherlands",
             "lat": "52.3842",
             "lng": "4.5345"
         },
