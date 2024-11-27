@@ -17,6 +17,10 @@ import { createGlowMesh } from "three-glow-mesh";
 import countries from "./files/globe-data-min.json";
 import travelHistory from "./files/my-flights.json";
 import airportHistory from "./files/my-airports.json";
+import { Font } from "three/examples/jsm/Addons.js";
+import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
+import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js';
+
 var renderer, camera, scene, controls;
 let mouseX = 0;
 let mouseY = 0;
@@ -60,7 +64,7 @@ function init() {
   dLight2.position.set(-200, 500, 200);
   camera.add(dLight2);
 
-  camera.position.z = 0;
+  camera.position.z = 400;
   camera.position.x = 0;
   camera.position.y = 0;
 
@@ -81,19 +85,19 @@ function init() {
   // Initialize controls
   controls = new OrbitControls(camera, renderer.domElement);
   controls.enableDamping = true;
-  controls.dynamicDampingFactor = 1.01;
-  controls.enablePan = false;
-  controls.minDistance = 330;
-  controls.maxDistance = 430;
-  controls.rotateSpeed = 0.4;
-  controls.zoomSpeed = 0.1;
+  controls.dynamicDampingFactor = 0.01;
+  controls.enablePan = true;
+  controls.minDistance = 250;
+  controls.maxDistance = 500;
+  controls.rotateSpeed = 0.8;
+  controls.zoomSpeed = 1;
   controls.autoRotate = true;
-  controls.autoRotateSpeed = 2;
+  controls.autoRotateSpeed = -1.5;
 
   controls.minPolarAngle = Math.PI / 3.5;
-  controls.maxPolarAngle = Math.PI - Math.PI / 4;
+  controls.maxPolarAngle = Math.PI - Math.PI / 3;
 
-  camera.filmGauge = 5;
+  camera.filmGauge = 1;
 
   window.addEventListener("resize", onWindowResize, false);
   document.addEventListener("mousemove", onMouseMove);
@@ -142,7 +146,7 @@ function initGlobe() {
       .labelsData(airportHistory.airports)
       .labelColor(() => "#ffffff")
       .labelDotOrientation((e) => {
-        return e.text === "ALA" ? "top" : "right";
+        return e.text === "ALA" ? "top" : "left";
       })
       .labelDotRadius(0.15)
       .labelSize((e) => e.size)
@@ -171,8 +175,11 @@ function initGlobe() {
 }
 
 function onMouseMove(event) {
+  mouseX = event.clientX - windowHalfX;
+  mouseY = event.clientY - windowHalfY;
   // console.log("x: " + mouseX + " y: " + mouseY);
 }
+
 
 function onWindowResize() {
   camera.aspect = window.innerWidth / window.innerHeight;
@@ -187,9 +194,10 @@ function animate() {
     Math.abs(mouseX) <= windowHalfX / 2
       ? (mouseX / 2 - camera.position.x) * 0.005
       : 0;
-  camera.position.y += (-mouseY);
+  camera.position.y += (-mouseY / 2 - camera.position.y) * 0.005;
   camera.lookAt(scene.position);
   controls.update();
   renderer.render(scene, camera);
   requestAnimationFrame(animate);
+
 }
