@@ -20,3 +20,4 @@ MySQL/
 # Claude / Playwright local
 .claude/
 .playwright-mcp/
+.vercel

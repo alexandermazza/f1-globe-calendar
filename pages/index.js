@@ -1,20 +1,20 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
-import { f1Races, generateArcs } from "../lib/data/f1-2024";
+import { f1Races, generateArcs } from "../lib/data/f1-2026";
 
 const World = dynamic(() => import("../lib/components/ui/globe").then(m => m.World), { ssr: false });
 
 const globeConfig = {
   pointSize: 2,
-  globeColor: "#0d1b2a",
+  globeColor: "#1a2d4a",
   showAtmosphere: true,
   atmosphereColor: "#ff1801",
-  atmosphereAltitude: 0.15,
-  emissive: "#0a0a1a",
-  emissiveIntensity: 0.25,
+  atmosphereAltitude: 0.18,
+  emissive: "#1a2d4a",
+  emissiveIntensity: 0.6,
   shininess: 0.9,
-  polygonColor: "rgba(200,220,255,0.65)",
+  polygonColor: "rgba(220,235,255,0.85)",
   ambientLight: "#ffffff",
   directionalLeftLight: "#ffffff",
   directionalTopLight: "#ffffff",
@@ -45,6 +45,7 @@ const globeData = [...arcs, ...circuitPoints];
 export default function Home() {
   const [hoveredCircuit, setHoveredCircuit] = useState(null);
   const [frontRace, setFrontRace] = useState(null);
+  const [selectedRace, setSelectedRace] = useState(null);
 
   return (
     <div className="relative min-h-screen bg-black overflow-hidden">
@@ -56,10 +57,10 @@ export default function Home() {
         className="absolute top-8 inset-x-0 z-20 text-center pointer-events-none"
       >
         <h1 className="text-white font-bold tracking-widest text-2xl md:text-4xl uppercase">
-          2024 Formula 1 Season
+          2026 Formula 1 Season
         </h1>
         <p className="text-sm md:text-base mt-1" style={{ color: "rgba(232,0,45,0.8)" }}>
-          24 Grands Prix · 21 Countries
+          22 Grands Prix · 19 Countries
         </p>
       </motion.div>
 
@@ -71,11 +72,48 @@ export default function Home() {
           races={f1Races}
           onHoverChange={setHoveredCircuit}
           onFrontRaceChange={setFrontRace}
+          flyToTarget={selectedRace}
         />
       </div>
 
       {/* Bottom gradient */}
       <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-b from-transparent to-black pointer-events-none z-10" />
+
+      {/* Race list sidebar */}
+      <div
+        className="absolute left-0 top-0 bottom-0 z-30 w-48 overflow-y-auto py-20 px-2"
+        style={{
+          scrollbarWidth: "thin",
+          scrollbarColor: "rgba(255,255,255,0.15) transparent",
+          maskImage: "linear-gradient(to bottom, transparent 60px, black 90px, black calc(100% - 40px), transparent 100%)",
+          WebkitMaskImage: "linear-gradient(to bottom, transparent 60px, black 90px, black calc(100% - 40px), transparent 100%)",
+        }}
+      >
+        {f1Races.map((race) => (
+          <button
+            key={race.round}
+            onClick={() => setSelectedRace(race)}
+            className={`w-full text-left px-2.5 py-1.5 rounded transition-all duration-200 ${
+              selectedRace?.round === race.round
+                ? "bg-[#e8002d]/15 border-l-2 border-[#e8002d]"
+                : "border-l-2 border-transparent hover:bg-white/5 hover:border-white/20"
+            }`}
+          >
+            <div className="flex items-baseline gap-2">
+              <span className={`text-[10px] font-bold tracking-wider shrink-0 ${
+                selectedRace?.round === race.round ? "text-[#e8002d]" : "text-neutral-500"
+              }`}>
+                {String(race.round).padStart(2, "0")}
+              </span>
+              <span className={`text-[11px] font-medium leading-tight truncate ${
+                selectedRace?.round === race.round ? "text-white" : "text-neutral-400"
+              }`}>
+                {race.name.replace(" Grand Prix", " GP")}
+              </span>
+            </div>
+          </button>
+        ))}
+      </div>
 
       {/* Front-facing race card — positioned on the globe at the circuit point */}
       {frontRace && !hoveredCircuit && (
