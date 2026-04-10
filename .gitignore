@@ -1,0 +1,22 @@
+# Next.js
+.next/
+out/
+
+# Dependencies
+node_modules/
+
+# Build artifacts
+*.bak
+
+# MySQL data
+MySQL/
+
+# IDE / workspace
+*.code-workspace
+
+# Debug images
+*.png
+
+# Claude / Playwright local
+.claude/
+.playwright-mcp/
